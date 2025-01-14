@@ -1,10 +1,7 @@
 package config
 
 import (
-	"log"
 	"os"
-
-	"github.com/joho/godotenv"
 )
 
 type Config struct {
@@ -28,10 +25,10 @@ type GeminiConfig struct {
 var config Config
 
 func Init() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatalf("err loading: %v", err)
-	}
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatalf("err loading: %v", err)
+	// }
 	config.Twitter.Client_id = os.Getenv("CLIENT_ID")
 	config.Twitter.Client_secret = os.Getenv("CLIENT_SECRET")
 	config.Twitter.Consumer_key = os.Getenv("CONSUMER_KEY")
