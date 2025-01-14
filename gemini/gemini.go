@@ -31,7 +31,7 @@ func NewGemini() *Gemini {
 
 func (g *Gemini) Generate(prompt string) string {
 	resp, err := g.client.Models.GenerateContent(context.Background(), "gemini-1.5-flash", genai.Text(prompt), &genai.GenerateContentConfig{
-		SystemInstruction: genai.Text("Create a tweet in a way that it is destined to go viral and structure it in a way that it will increase user interaction. Give only the tweet and nothing else ONLY TWEET! Keep length of tweet inside 250 words")[0],
+		SystemInstruction: genai.Text("Create a tweet in a way that it is destined to go viral and structure it in a way that it will increase user interaction. Give only the tweet and nothing else ONLY TWEET! Keep length of tweet inside 280 characters strictly")[0],
 		Temperature:       func(f float64) *float64 { return &f }(2),
 	})
 	if err != nil {
