@@ -1,0 +1,36 @@
+name: Run Go Script
+
+on: 
+  workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: '1.23' 
+
+    - name: Install Dependencies
+      run: |
+        go mod tidy
+
+    - name: Debugging Output
+      run: |
+        ls -la
+
+    - name: Run Go Script
+      env:
+        ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+        ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+        CLIENT_ID: ${{ secrets.TWITTER_CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.TWITTER_CLIENT_SECRET }}
+        CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
+        CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+        API_KEY: ${{secrets.GEMINI_API_KEY}}
+      run: go run main.go
