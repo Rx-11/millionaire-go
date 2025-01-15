@@ -2,7 +2,7 @@ name: Run Go Script
 
 on:
   schedule:
-    - cron: ' 0 */15 * * * '  
+    - cron: ' 0 */2 * * * '  
 
 jobs:
   build:
