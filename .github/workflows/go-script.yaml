@@ -1,8 +1,10 @@
 name: Run Go Script
 
-on:
-  schedule:
-    - cron: ' 0 */2 * * * '  
+# on:
+#   schedule:
+#     - cron: ' 0 */2 * * * '  
+
+on: workflow_dispatch
 
 jobs:
   build:
